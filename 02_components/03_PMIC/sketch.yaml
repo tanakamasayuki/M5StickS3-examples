@@ -1,0 +1,8 @@
+profiles:
+  esp32s3:
+    fqbn: esp32:esp32:esp32s3:CDCOnBoot=cdc,FlashSize=8M,PartitionScheme=default_8MB,DebugLevel=debug,PSRAM=opi
+    platforms:
+      - platform: esp32:esp32 (3.3.6)
+        platform_index_url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+    libraries:
+      - M5PM1 (1.0.4)

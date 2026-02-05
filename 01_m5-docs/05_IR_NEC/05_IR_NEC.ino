@@ -51,7 +51,7 @@ void setup()
     Serial.printf("IR Send Pin: %d\n", IR_SEND_PIN);
 
     // Enable external power output for IR LED module
-    M5.Power.setExtOutput(true, m5::ext_none);
+    M5.Power.setExtOutput(true);
     delay(100);
 }
 
