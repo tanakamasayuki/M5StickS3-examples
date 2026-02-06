@@ -38,7 +38,7 @@ void setup()
 
     // Display initialization
     M5.Display.setRotation(3);
-    M5.Display.setTextFont(&fonts::FreeMonoBold9pt7b);
+    M5.Display.setFont(&fonts::FreeMonoBold9pt7b); // Fix: setTextFont -> setFont
     M5.Display.clear();
     M5.Display.setCursor(0, 0);
     M5.Display.printf("StickS3 IR example");
