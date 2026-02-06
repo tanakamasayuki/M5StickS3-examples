@@ -16,17 +16,8 @@ void setup()
     Serial.begin(115200);
     delay(1000);
 
-    m5pm1_err_t err = pm1.begin(&Wire, M5PM1_DEFAULT_ADDR, I2C_SDA_PIN, I2C_SCL_PIN, M5PM1_I2C_FREQ_100K);
-    if (err == M5PM1_OK)
-    {
-        Serial.println("PM1 initialization successful");
-    }
-    else
-    {
-        Serial.printf("PM1 initialization failed, error code: %d\n", err);
-    }
-
     // IR Receiver needs 5V power & Speaker off
+    pm1.begin(&Wire, M5PM1_DEFAULT_ADDR, I2C_SDA_PIN, I2C_SCL_PIN, M5PM1_I2C_FREQ_100K);
     pm1.setBoostEnable(true);
     pm1.pinMode(3, OUTPUT);
     pm1.digitalWrite(3, LOW);
