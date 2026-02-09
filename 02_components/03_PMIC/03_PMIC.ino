@@ -8,7 +8,7 @@ HW Version    : 0x05
 SW Version    : 0x4F
 Power default : CHG=ON  DCDC=ON  LDO=ON  5V=OFF
 Power CHG off : CHG=OFF DCDC=ON  LDO=ON  5V=OFF
-Power 5V off  : CHG=OFF DCDC=ON  LDO=ON  5V=ON
+Power 5V on   : CHG=OFF DCDC=ON  LDO=ON  5V=ON
 Power default : CHG=ON  DCDC=ON  LDO=ON  5V=OFF
 Vref          : 3340 mV (3.340 V)
 VBAT          : 4104 mV (4.104 V)
@@ -94,7 +94,7 @@ void loop()
     // pm1.setLDOEnable(false);
 
     pm1.setBoostEnable(true);
-    Serial.printf("Power 5V off  : ");
+    Serial.printf("Power 5V on   : ");
     printPowerConfig();
     delay(1000);
 
