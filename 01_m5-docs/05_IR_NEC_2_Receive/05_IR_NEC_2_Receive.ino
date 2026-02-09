@@ -66,7 +66,7 @@ void loop()
             uint16_t rx_addr = rx_data & 0xFFFF;
             uint8_t rx_cmd = (rx_data >> 16) & 0xFF;
             Serial.printf(
-                "Received NEC: Addr: 0x%04X, Cmd: 0x%02X, Raw: 0x%08X\n",
+                "Received NEC: Addr: 0x%04X, Cmd: 0x%02X, Raw: 0x%08lX\n",
                 rx_addr, rx_cmd, rx_data);
 
             M5.Display.fillRect(0, 30, 240, 105, TFT_BLACK);
@@ -75,7 +75,7 @@ void loop()
             M5.Display.printf("Received NEC:\n");
             M5.Display.printf("Addr: 0x%04X\n", rx_addr);
             M5.Display.printf("Cmd:  0x%02X\n", rx_cmd);
-            M5.Display.printf("Raw:  0x%08X\n", rx_data);
+            M5.Display.printf("Raw:  0x%08lX\n", rx_data);
         }
         else
         {
@@ -115,6 +115,13 @@ void setup_rmt_rx()
         .clk_src = RMT_CLK_SRC_DEFAULT,
         .resolution_hz = 1000000, // 1 us per tick
         .mem_block_symbols = 128,
+        .intr_priority = 0,
+        .flags = {
+            .invert_in = 0,
+            .with_dma = 0,
+            .io_loop_back = 0,
+            .allow_pd = 0,
+        },
     };
     ESP_ERROR_CHECK(rmt_new_rx_channel(&rx_chan_config, &rx_chan));
     rmt_rx_event_callbacks_t cbs = {
@@ -129,7 +136,11 @@ void start_rmt_receive()
 {
     rmt_receive_config_t receive_config = {
         .signal_range_min_ns = 1000,
-        .signal_range_max_ns = 20000000};
+        .signal_range_max_ns = 20000000,
+        .flags = {
+            .en_partial_rx = 0,
+        },
+    };
 
     ESP_ERROR_CHECK(rmt_receive(rx_chan, rx_raw_symbols, sizeof(rx_raw_symbols), &receive_config));
 }
