@@ -40,7 +40,7 @@ void setup()
 
     // Display initialization
     M5.Display.setRotation(3);
-    M5.Display.setFont(&fonts::FreeMonoBold9pt7b); // Fix: setTextFont -> setFont
+    M5.Display.setTextFont(&fonts::FreeMonoBold9pt7b);
     M5.Display.clear();
     M5.Display.setCursor(0, 0);
     M5.Display.printf("StickS3 IR example");
@@ -53,7 +53,7 @@ void setup()
     Serial.printf("IR Send Pin: %d\n", IR_SEND_PIN);
 
     // Enable external power output for IR LED module
-    M5.Power.setExtOutput(true);
+    M5.Power.setExtOutput(true, m5::ext_none);
     delay(100);
 }
 
