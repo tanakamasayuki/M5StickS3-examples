@@ -2,6 +2,8 @@
 #include "driver/rmt_tx.h"
 #include "driver/rmt_encoder.h"
 
+// https://docs.m5stack.com/en/arduino/m5sticks3/ir_nec
+
 #define IR_SEND_PIN 46 // GPIO pin connected to IR LED transmitter
 
 // NEC protocol parameters

@@ -2,6 +2,8 @@
 #include <M5PM1.h>
 #include <Wire.h>
 
+// https://docs.m5stack.com/en/arduino/m5sticks3/m5pm1
+
 M5PM1 pm1;
 
 void setup(void)

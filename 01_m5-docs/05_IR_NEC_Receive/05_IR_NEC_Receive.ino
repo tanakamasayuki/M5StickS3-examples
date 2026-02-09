@@ -1,6 +1,8 @@
 #include "M5Unified.h"
 #include "driver/rmt_rx.h"
 
+// https://docs.m5stack.com/en/arduino/m5sticks3/ir_nec
+
 #define IR_RECEIVE_PIN 42
 
 rmt_channel_handle_t rx_chan = NULL;
