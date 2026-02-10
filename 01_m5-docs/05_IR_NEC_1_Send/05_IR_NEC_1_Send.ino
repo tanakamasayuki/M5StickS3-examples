@@ -2,6 +2,8 @@
 #include "driver/rmt_tx.h"
 #include "driver/rmt_encoder.h"
 
+// https://docs.m5stack.com/en/arduino/m5sticks3/ir_nec
+
 #define IR_SEND_PIN 46 // GPIO pin connected to IR LED transmitter
 
 // NEC protocol parameters
@@ -38,7 +40,7 @@ void setup()
 
     // Display initialization
     M5.Display.setRotation(3);
-    M5.Display.setFont(&fonts::FreeMonoBold9pt7b); // Fix: setTextFont -> setFont
+    M5.Display.setTextFont(&fonts::FreeMonoBold9pt7b);
     M5.Display.clear();
     M5.Display.setCursor(0, 0);
     M5.Display.printf("StickS3 IR example");
@@ -51,7 +53,7 @@ void setup()
     Serial.printf("IR Send Pin: %d\n", IR_SEND_PIN);
 
     // Enable external power output for IR LED module
-    M5.Power.setExtOutput(true);
+    M5.Power.setExtOutput(true, m5::ext_none);
     delay(100);
 }
 

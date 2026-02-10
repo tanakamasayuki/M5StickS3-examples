@@ -2,16 +2,13 @@
 #include <M5PM1.h>
 #include <Wire.h>
 
-// https://docs.m5stack.com/en/arduino/m5sticks3/m5pm1
+// https://docs.m5stack.com/en/arduino/m5sticks3/wakeup
 
 M5PM1 pm1;
 
 void setup(void)
 {
     M5.begin();
-
-    M5.Power.setExtOutput(false); // Add: this line to disable the external power output
-
     M5.Display.setRotation(1);
     Serial.begin(115200);
     auto pin_num_sda = M5.getPin(m5::pin_name_t::in_i2c_sda);
@@ -36,8 +33,7 @@ void setup(void)
     M5.Display.setTextColor(WHITE);
     M5.Display.setCursor(0, 10);
     M5.Display.println("Timer Power Test");
-    M5.Display.println("BtnA: After 10s ON");
-    M5.Display.println("BtnB: After 10s OFF");
+    M5.Display.println("BtnA: After 10s Wakeup");
 }
 
 void loop(void)
@@ -49,17 +45,8 @@ void loop(void)
         M5.Display.setCursor(0, 10);
         M5.Display.println("Shutdown");
         M5.Display.println("After 10s");
-        M5.Display.println("Power ON");
+        M5.Display.println("Wakeup");
         delay(1000);
         pm1.timerSet(10, M5PM1_TIM_ACTION_POWERON);
-    }
-    if (M5.BtnB.wasPressed())
-    {
-        M5.Display.fillScreen(BLACK);
-        M5.Display.setCursor(0, 10);
-        M5.Display.println("After 10s");
-        M5.Display.println("Power OFF");
-        delay(1000);
-        pm1.timerSet(10, M5PM1_TIM_ACTION_POWEROFF);
     }
 }

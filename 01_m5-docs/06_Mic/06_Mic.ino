@@ -1,5 +1,7 @@
 #include "M5Unified.h"
 
+// https://docs.m5stack.com/en/arduino/m5sticks3/mic
+
 static constexpr const size_t record_number = 256;
 static constexpr const size_t record_length = 256;
 static constexpr const size_t record_size = record_number * record_length;

@@ -1,5 +1,7 @@
 #include "M5Unified.h"
 
+// https://docs.m5stack.com/en/arduino/m5sticks3/wakeup
+
 void setup(void)
 {
     M5.begin();
